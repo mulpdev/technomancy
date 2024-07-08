@@ -1,0 +1,1 @@
+https://github.com/VDOO-Connected-Trust/ghidra-pyi-generator
