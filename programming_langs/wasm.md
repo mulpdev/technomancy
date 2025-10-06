@@ -1,0 +1,1 @@
+`emcc -s WASM=1 -s EXPORTED_FUNCTIONS='["_a"]' --no-entry hw.c`
