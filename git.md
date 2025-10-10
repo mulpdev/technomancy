@@ -53,7 +53,7 @@ git branch -m main  # if necessary
 
 git add *  
 git commit -m 'new init'  
-git remote add origin git@github.com:mulpdev/my-linux-configs.git  
+git remote add origin git@github.com:mulpdev/technomancy.git  
 git push --force --set-upstream origin main
 ```
 # gitignore

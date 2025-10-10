@@ -1,3 +1,16 @@
+
+# getting config and pack paths
+```
+:echo stdpath('config')
+
+
+```
+
+Windows
+- config: `C:\User<username>\AppData\Local\nvim`
+	- listed in packpath but putting site w/ plugins dodn't work
+- plugins `C:\User<username>\AppData\Local\nvim-data\site`
+
 # lua snippets
 
 ```lua

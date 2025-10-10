@@ -66,3 +66,8 @@ ls -la /proc/pid/fd
 
 lsof -i -a -P -p <pid>
 ```
+
+# mktemp
+temp file and tmp dir
+`temp_file=$(mktemp)` - makes a file
+`temp_file=$(mktemp -d)` - makes a dir
