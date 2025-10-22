@@ -1,3 +1,6 @@
+https://unix.stackexchange.com/questions/444946/how-can-we-run-a-command-stored-in-a-variable
+
+Table of Contents
 - [shell operators](#shell%20operators)
     - [chaining](#chaining)
     - [pipes](#pipes)
@@ -27,7 +30,12 @@
     - [:- and :+ in variables](#:-%20and%20:+%20in%20variables)
     - [pattern match filtering of a variable](#pattern%20match%20filtering%20of%20a%20variable)
 - [command substitution](#command%20substitution)
-
+- [Path Snippets](#Path%20Snippets)
+	- [escape all backslashes](#escape%20all%20backslashes)
+	- [is path absolute or relative](#is%20path%20absolute%20or%20relative)
+	- [directory, filename, filestem, extension](#directory,%20filename,%20filestem,%20extension)
+- [Run command in variable](#Run%20command%20in%20variable)
+	
 ```sh
 #! /bin/sh
 
@@ -154,6 +162,13 @@ While lines of output
 history | grep "apt install" | while IFS='' read -r line; do echo "${line#*apt install}"; done
 ```
 
+Files in directory
+```sh
+# DO NOT put quotes around path/* or it breaks
+for file in /path/to/directory/*; do 
+  echo "${file}"
+done
+```
 # Functions
 Functions are run in a sub shell, so use the array variables for arguments
 
@@ -457,4 +472,46 @@ kill -9 $(ps aux | awk '{if (match($11, "qemu")) print 2$}')
 file $(find . -name "*lib*" 2>/dev/null | grep "_v2") # run file on every match
 
 grep -in "subprocess\.run" $(find . -type f -name "*.py")
+```
+
+# Path Snippets
+## escape all backslashes
+```sh
+if [ -n "${WINDIR}" ]; then
+  # escape all \ for Windows Path
+  tgz_file_path=$(echo "${tgz_file_path}" | sed 's/\\/\\\\/g') 
+fi
+```
+
+## is path absolute or relative
+```sh
+# do a leftmost filter of variable against with single char string '/'
+# if left most character is a / it will be removed
+# otherwise the result string will be identical
+
+if [ "${1}" != "${1#/}" ]; then
+  folder_path="${1}" # absolute path
+else
+  folder_path="./${1}" # relative
+fi
+```
+
+## directory, filename, filestem, extension
+```sh
+var="path/to/somefile.ext"
+
+directory="${var%/*}" # path/to/
+filename="${var##*/}" # somefile.ext
+filestem=$(tmp="${var##*/}" && echo "${tmp%.*}")   # somefile
+extension=$(tmp="${var##*/}" && echo "${tmp##*.}") # ext
+```
+
+# Run command in variable
+```sh
+# Less problematic to use array
+set -- "prog" "arg1" "option"
+"${@}"
+
+# This works, but may have string issues
+"${var}"
 ```

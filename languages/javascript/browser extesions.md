@@ -1,0 +1,1 @@
+background.js cannot use DOM or normal console, use "inspect" button where you load the extension to gain access to special DOM/console

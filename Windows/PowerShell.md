@@ -10,6 +10,12 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
 Set-ExecutionPolicy -ExecutionPolicy Unrestriced
 ```
 
+User
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+Set-ExecutionPolicy -ExecutionPolicy Unrestriced -Scope CurrentUser
+```
+
 # Environment Variables
 
 ```powershell

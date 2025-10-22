@@ -1,5 +1,7 @@
 # tl;dr
 
+https://docs.docker.com/engine/install/debian/#install-using-the-repository
+
 ```sh
 # <hash/tagname> is the image hash OR the tag if available
 sudo docker build .

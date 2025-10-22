@@ -1,6 +1,5 @@
 
 ```sh
-npm install -g tsserver
-npm install -g typescript  # ts "compiler"
+npm install -g typescript-language-server typescript
 ```
 
